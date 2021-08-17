@@ -14,7 +14,9 @@ namespace ERPsystem.BL.Configration
         public AutoMapperProfile()
         {
             CreateMap<Employee, EmployeeDto>()
+               //.ForMember(vm => vm.DepartmentId, m => m.MapFrom(u => u.Department.DepartmentId))
                .ForMember(vm => vm.DeptName, m => m.MapFrom(u => u.Department.DeptName)).ReverseMap();
+
             CreateMap<Department, DepartmentDto>().ReverseMap();
 
 

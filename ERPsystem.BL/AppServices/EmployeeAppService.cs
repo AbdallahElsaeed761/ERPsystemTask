@@ -32,7 +32,7 @@ namespace ERPsystem.BL.AppServices
 
 
 
-        public bool SaveNewEmployee(EmployeeDto employeeDto)
+        public Employee SaveNewEmployee(EmployeeDto employeeDto)
         {
             if (employeeDto == null)
 
@@ -44,7 +44,7 @@ namespace ERPsystem.BL.AppServices
             {
                 result = TheUnitOfWork.Commit() > new int();
             }
-            return result;
+            return employee;
         }
 
 

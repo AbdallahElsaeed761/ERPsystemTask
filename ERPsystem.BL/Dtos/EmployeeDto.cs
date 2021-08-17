@@ -25,7 +25,7 @@ namespace ERPsystem.BL.Dtos
         [Range(2000, 10000, ErrorMessage = "Please enter valid Salary between 2000 and 10000")]
 
         public double Salary { get; set; }
-        
+
         public string DeptName { get; set; }
 
         public int DepartmentId { get; set; }

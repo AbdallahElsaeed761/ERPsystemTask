@@ -36,12 +36,16 @@ namespace ERPsystem.WebApi
                 c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
             });
 
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling =
+Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             services.AddDbContext<ApplicationDbContext>(option => {
-                option.UseSqlServer(Configuration.GetConnectionString("CS"),
+
+                option.UseLazyLoadingProxies().UseSqlServer(Configuration.GetConnectionString("CS"),
                     options => options.EnableRetryOnFailure());
             });
+            
+
 
             services.AddTransient<IUnitOfWork, UnitOfWork>();
            
@@ -51,6 +55,7 @@ namespace ERPsystem.WebApi
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             
+
 
 
             services.AddSwaggerGen(c =>

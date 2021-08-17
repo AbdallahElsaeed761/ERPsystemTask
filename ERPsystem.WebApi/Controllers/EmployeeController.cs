@@ -42,10 +42,10 @@ namespace ERPsystem.WebApi.Controllers
             }
             try
             {
-                _employeeAppService.SaveNewEmployee(employeeDto);
+               var emp= _employeeAppService.SaveNewEmployee(employeeDto);
 
                
-                return Created("CreateEmployee",employeeDto);
+                return Created("CreateEmployee",emp);
             }
             catch (Exception ex)
             {
