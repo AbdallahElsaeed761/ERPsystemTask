@@ -10,8 +10,8 @@ namespace ERPsystem.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    
-    
+
+
     public class EmployeeController : ControllerBase
     {
         private readonly EmployeeAppService _employeeAppService;
@@ -25,6 +25,21 @@ namespace ERPsystem.WebApi.Controllers
         {
             return Ok(_employeeAppService.GetAllEmployees());
         }
+        [HttpGet("in/{deptName}")]
+        public IActionResult GetAllEmployeeForDepartment(string deptName)
+        {
+            var emps = _employeeAppService.GetEmployeesForSpecficDepartment(deptName).ToList();
+            return Ok(emps);
+        }
+
+        [HttpGet("Count/{deptmentName}")]
+        public IActionResult GetCountOfEmployeeForDepartment(string deptmentName)
+        {
+            var emps = _employeeAppService.CountEntityForSpecficDepartment(deptmentName);
+            return Ok(emps);
+        }
+
+
 
         [HttpGet("{id}")]
         public IActionResult GetEmployeeById(int id)

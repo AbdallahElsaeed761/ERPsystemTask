@@ -21,7 +21,7 @@ namespace ERPsystem.BL.Repositories
 
         public List<Employee> GetAllEmployee()
         {
-            return GetAll().ToList();
+            return GetAll().Include(d=>d.Department).ToList();
         }
 
         public bool InsertEmployee(Employee employee)
@@ -46,5 +46,14 @@ namespace ERPsystem.BL.Repositories
             return GetFirstOrDefault(l => l.EmployeeId == id);
         }
         #endregion
+
+        public override int CountEntity()
+        {
+            return DbSet.Count();
+        }
+        public int CountEntityForSpeCifcDepartment(string deptName)
+        {
+            return DbSet.Where(o => o.Department.DeptName == deptName).Count();
+        }
     }
 }

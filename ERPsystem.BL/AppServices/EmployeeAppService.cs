@@ -74,5 +74,21 @@ namespace ERPsystem.BL.AppServices
             return TheUnitOfWork.Employee.CheckEmployeeExists(employee);
         }
         #endregion
+
+        public int CountEntity()
+        {
+            return TheUnitOfWork.Employee.CountEntity();
+        }
+        public int CountEntityForSpecficDepartment(string deptmentName)
+        {
+            return TheUnitOfWork.Employee.CountEntityForSpeCifcDepartment(deptmentName);
+        }
+        public List<EmployeeDto> GetEmployeesForSpecficDepartment(string deptName)
+        {
+            if (deptName == null || deptName == "")
+                throw new ArgumentNullException();
+
+            return GetAllEmployees().Where(p => p.DeptName == deptName).ToList();
+        }
     }
 }

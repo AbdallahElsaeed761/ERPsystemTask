@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ERPsystem.DAL.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -29,5 +30,6 @@ namespace ERPsystem.BL.Dtos
         public string DeptName { get; set; }
 
         public int DepartmentId { get; set; }
+        //public virtual Department Department { get; set; }
     }
 }

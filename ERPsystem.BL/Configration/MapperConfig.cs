@@ -15,7 +15,8 @@ namespace ERPsystem.BL.Configration
         {
             CreateMap<Employee, EmployeeDto>()
                //.ForMember(vm => vm.DepartmentId, m => m.MapFrom(u => u.Department.DepartmentId))
-               .ForMember(vm => vm.DeptName, m => m.MapFrom(u => u.Department.DeptName)).ReverseMap();
+               .ForMember(vm => vm.DeptName, m => m.MapFrom(u => u.Department.DeptName)).ReverseMap()
+               .ForMember(m => m.Department, m => m.Ignore());
 
             CreateMap<Department, DepartmentDto>().ReverseMap();
 

@@ -46,5 +46,9 @@ namespace ERPsystem.BL.Repositories
             return GetFirstOrDefault(l => l.DepartmentId == id);
         }
         #endregion
+        public override int CountEntity()
+        {
+            return DbSet.Count();
+        }
     }
 }
